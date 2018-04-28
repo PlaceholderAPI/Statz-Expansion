@@ -69,6 +69,19 @@ public class StatzExpansion extends PlaceholderExpansion {
         if (player == null) {
             return "";
         }
+        if (identifier.startsWith("mobs_killed_")) {
+            identifier = identifier.replace("mobs_killed_", "");
+            return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", identifier.toUpperCase())).longValue());
+        }
+        if (identifier.startsWith("blocks_broken_")) {
+            identifier = identifier.replace("blocks_broken_", "");
+            return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_BROKEN, player.getUniqueId(), new RowRequirement("typeid", identifier.toUpperCase())).longValue());
+        }
+
+        if (identifier.startsWith("blocks_placed_")) {
+            identifier = identifier.replace("blocks_placed_", "");
+            return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_PLACED, player.getUniqueId(), new RowRequirement("typeid", identifier.toUpperCase())).longValue());
+        }
 
         switch(identifier) {
             case "joins":
@@ -99,104 +112,6 @@ public class StatzExpansion extends PlaceholderExpansion {
                 return String.valueOf(api.getSpecificData(PlayerStat.XP_GAINED, player.getUniqueId()).longValue());
             case "mobs_killed":
                 return String.valueOf(api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId()).longValue());
-            case "mobs_killed_bat":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "BAT")).longValue());
-            case "mobs_killed_blaze":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "BLAZE")).longValue());
-            case "mobs_killed_cave_spider":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "CAVE_SPIDER")).longValue());
-            case "mobs_killed_chicken":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "CHICKEN")).longValue());
-            case "mobs_killed_cow":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "COW")).longValue());
-            case "mobs_killed_creeper":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "CREEPER")).longValue());
-            case "mobs_killed_donkey":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "DONKEY")).longValue());
-            case "mobs_killed_elder_guardian":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "ELDER_GUARDIAN")).longValue());
-            case "mobs_killed_enderman":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "ENDERMAN")).longValue());
-            case "mobs_killed_endermite":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "ENDERMITE")).longValue());
-            case "mobs_killed_ender_dragon":
-                  return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "ENDER_DRAGON")).longValue());
-            case "mobs_killed_evoker":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "EVOKER")).longValue());
-            case "mobs_killed_ghast":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "GHAST")).longValue());
-            case "mobs_killed_giant":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "GIANT")).longValue());
-            case "mobs_killed_guardian":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "GUARDIAN")).longValue());
-            case "mobs_killed_horse":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "HORSE")).longValue());
-            case "mobs_killed_husk":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "HUSK")).longValue());
-            case "mobs_killed_iron_golem":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "IRON_GOLEM")).longValue());
-            case "mobs_killed_killer_rabbit":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "KILLER RABBIT")).longValue());
-            case "mobs_killed_llama":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "LLeweAMA")).longValue());
-            case "mobs_killed_magma_cube":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "MAGMA_CUBE")).longValue());
-            case "mobs_killed_mule":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "MULE")).longValue());
-            case "mobs_killed_mushroom_cow":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "MUSHROOM_COW")).longValue());
-            case "mobs_killed_ocelot":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "OCELOT")).longValue());
-            case "mobs_killed_parrot":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "PARROT")).longValue());
-            case "mobs_killed_pig":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "PIG")).longValue());
-            case "mobs_killed_pig_zombie":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "PIG_ZOMBIE")).longValue());
-            case "mobs_killed_polar_bear":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "POLAR_BEAR")).longValue());
-            case "mobs_killed_powered_creeper":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "POWERED CREEPER")).longValue());
-            case "mobs_killed_rabbit":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "RABBIT")).longValue());
-            case "mobs_killed_sheep":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SHEEP")).longValue());
-            case "mobs_killed_shulker":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SHULKER")).longValue());
-            case "mobs_killed_silverfish":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SILVERFISH")).longValue());
-            case "mobs_killed_skeleton":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SKELETON")).longValue());
-            case "mobs_killed_skeleton_horse":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SKELETON_HORSE")).longValue());
-            case "mobs_killed_slime":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SLIME")).longValue());
-            case "mobs_killed_snowman":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SNOWMAN")).longValue());
-            case "mobs_killed_spider":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SPIDER")).longValue());
-            case "mobs_killed_spider_jockey":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SPIDER JOCKEY")).longValue());
-            case "mobs_killed_squid":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "SQUID")).longValue());
-            case "mobs_killed_stray":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "STRAY")).longValue());
-            case "mobs_killed_vex":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "VEX")).longValue());
-            case "mobs_killed_villager":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "VILLAGER")).longValue());
-            case "mobs_killed_vindicator":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "VINDICATOR")).longValue());
-            case "mobs_killed_witch":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "WITCH")).longValue());
-            case "mobs_killed_wither_skeleton":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "WITHER_SKELETON")).longValue());
-            case "mobs_killed_wolf":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "WOLF")).longValue());
-            case "mobs_killed_zombie":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "ZOMBIE")).longValue());
-            case "mobs_killed_zombie_villager":
-                return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", "ZOMBIE_VILLAGER")).longValue());
         }
         return null;
     }
