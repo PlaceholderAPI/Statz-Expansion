@@ -75,12 +75,18 @@ public class StatzExpansion extends PlaceholderExpansion {
         }
         if (identifier.startsWith("blocks_broken_")) {
             identifier = identifier.replace("blocks_broken_", "");
-            return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_BROKEN, player.getUniqueId(), new RowRequirement("typeid", identifier.toUpperCase())).longValue());
+            if (identifier.contains(":")) {
+                String[] broke = identifier.split(":", 2);
+                return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_BROKEN, player.getUniqueId(), new RowRequirement("typeid", broke[0]), new RowRequirement("datavalue", broke[1])).longValue());
+            }else return "Wrong Format";
         }
 
         if (identifier.startsWith("blocks_placed_")) {
             identifier = identifier.replace("blocks_placed_", "");
-            return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_PLACED, player.getUniqueId(), new RowRequirement("typeid", identifier.toUpperCase())).longValue());
+            if (identifier.contains(":")) {
+                String[] place = identifier.split(":", 2);
+                return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_BROKEN, player.getUniqueId(), new RowRequirement("typeid", place[0]), new RowRequirement("datavalue", place[1])).longValue());
+            }else return "Wrong Format";
         }
 
         switch(identifier) {
