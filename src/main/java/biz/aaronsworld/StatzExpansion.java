@@ -78,7 +78,7 @@ public class StatzExpansion extends PlaceholderExpansion {
             if (identifier.contains(":")) {
                 String[] broke = identifier.split(":", 2);
                 return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_BROKEN, player.getUniqueId(), new RowRequirement("typeid", broke[0]), new RowRequirement("datavalue", broke[1])).longValue());
-            }else return "Wrong Format";
+            }else return "&4Wrong Format";
         }
 
         if (identifier.startsWith("blocks_placed_")) {
@@ -86,7 +86,7 @@ public class StatzExpansion extends PlaceholderExpansion {
             if (identifier.contains(":")) {
                 String[] place = identifier.split(":", 2);
                 return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_BROKEN, player.getUniqueId(), new RowRequirement("typeid", place[0]), new RowRequirement("datavalue", place[1])).longValue());
-            }else return "Wrong Format";
+            }else return "&4Wrong Format";
         }
 
         switch(identifier) {
