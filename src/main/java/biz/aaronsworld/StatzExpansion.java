@@ -73,6 +73,7 @@ public class StatzExpansion extends PlaceholderExpansion {
             identifier = identifier.replace("mobs_killed_", "");
             return String.valueOf(this.api.getSpecificData(PlayerStat.KILLS_MOBS, player.getUniqueId(), new RowRequirement("mob", identifier.toUpperCase())).longValue());
         }
+        
         if (identifier.startsWith("blocks_broken_")) {
             identifier = identifier.replace("blocks_broken_", "");
             if (identifier.contains(":")) {
@@ -85,7 +86,7 @@ public class StatzExpansion extends PlaceholderExpansion {
             identifier = identifier.replace("blocks_placed_", "");
             if (identifier.contains(":")) {
                 String[] place = identifier.split(":", 2);
-                return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_BROKEN, player.getUniqueId(), new RowRequirement("typeid", place[0]), new RowRequirement("datavalue", place[1])).longValue());
+                return String.valueOf(this.api.getSpecificData(PlayerStat.BLOCKS_PLACED, player.getUniqueId(), new RowRequirement("typeid", place[0]), new RowRequirement("datavalue", place[1])).longValue());
             }else return "&4Wrong Format";
         }
 
