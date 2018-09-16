@@ -4,7 +4,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.staartvin.statz.Statz;
 import me.staartvin.statz.api.API;
-import me.staartvin.statz.datamanager.PlayerStat;
+import me.staartvin.statz.datamanager.player.PlayerStat;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -63,7 +63,7 @@ public class StatzExpansion extends PlaceholderExpansion {
 
     @Override
     public String getVersion() {
-        return "1.0.2";
+        return "1.0.3";
     }
 
     @Override
