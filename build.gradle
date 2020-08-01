@@ -55,7 +55,7 @@ repositories {
 
 dependencies {
     provided 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
-    provided 'me.clip:placeholderapi:2.8.2'
+    provided 'me.clip:placeholderapi:2.10.7'
     provided 'net.milkbowl.vault:VaultAPI:1.6'
     provided files ('libs/Statz.jar')
 

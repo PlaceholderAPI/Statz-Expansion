@@ -6,6 +6,7 @@ import me.staartvin.statz.Statz;
 import me.staartvin.statz.api.API;
 import me.staartvin.statz.datamanager.player.PlayerStat;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 /**
@@ -19,7 +20,7 @@ public class StatzExpansion extends PlaceholderExpansion {
 
     @Override
     public boolean canRegister() {
-        Statz statz = (Statz) Bukkit.getServer().getPluginManager().getPlugin("Statz");
+        Statz statz = (Statz) Bukkit.getServer().getPluginManager().getPlugin(getRequiredPlugin());
 
         if (statz != null) {
             api = statz.getStatzAPI();
@@ -37,13 +38,13 @@ public class StatzExpansion extends PlaceholderExpansion {
             return false;
         }
 
-        plugin = (Statz) Bukkit.getPluginManager().getPlugin(getPlugin());
+        plugin = (Statz) Bukkit.getPluginManager().getPlugin(getRequiredPlugin());
 
         if (plugin == null) {
             return false;
         }
 
-        return PlaceholderAPI.registerPlaceholderHook(getIdentifier(), this);
+        return super.register();
     }
 
     @Override
@@ -57,7 +58,7 @@ public class StatzExpansion extends PlaceholderExpansion {
     }
 
     @Override
-    public String getPlugin() {
+    public String getRequiredPlugin() {
         return "Statz";
     }
 
@@ -67,7 +68,7 @@ public class StatzExpansion extends PlaceholderExpansion {
     }
 
     @Override
-    public String onPlaceholderRequest(Player player, String identifier) {
+    public String onRequest(OfflinePlayer player, String identifier) {
 
         if (player == null) {
             return "";
